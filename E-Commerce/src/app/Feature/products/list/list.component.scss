@@ -1,0 +1,25 @@
+:host ::ng-deep .p-card-title {
+   text-align:  center;
+   font-size: 33px;
+}
+
+
+:host ::ng-deep .p-component, :host ::ng-deep .p-card-header img{
+
+    border-radius: 5px !important;
+    transition: width 1s !important;
+
+
+
+}
+
+:host ::ng-deep .p-component:hover,:host ::ng-deep .p-card-header img:hover {
+
+  width: 375px !important;
+}
+
+
+@keyframes fadein  {
+from {opacity: 0;}
+to{opacity: 100;}
+}

@@ -1,16 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrdersModule } from './Feature/orders/orders.module';
 
 const routes: Routes = [
+
   {
-    path: 'Products',
-    loadChildren: () => import('./Feature/products/products.module').then(m => m.ProductsModule)
+    path: '',
+    redirectTo: 'products',
+    pathMatch: 'full'
   },
   {
-    path : 'Orders',
-    loadChildren:()=> import('./Feature/orders/orders.module').then(m=>OrdersModule)
-  }
+  path: 'products',
+  loadChildren: () => import('./Feature/products/products.module').then(m => m.ProductsModule)
+  },
+
+ {
+  path: 'orders',
+    loadChildren: () => import('./Feature/orders/orders.module').then(m => m.OrdersModule)
+ }
 ];
 
 @NgModule({
