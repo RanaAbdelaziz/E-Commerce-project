@@ -1,0 +1,26 @@
+
+<div>
+
+  <div class=" inline-flex m-4"*ngFor="let product of products">
+
+    <p-card header={{product.ProductName}} subheader="{{product.ProductPrice}}" [style]="{ width: '360px' }" >
+        <ng-template pTemplate="header">
+            <img alt="Card" src= {{product.ProductImg}} />
+            <li>
+
+              <button class="btn btn-primary"
+                                  style="background-color: #e3f2fd; color:black"
+                                  >Add
+                                      To Cart</button>
+            </li>
+        </ng-template>
+        <p>
+            <br> Available Pieces : {{product.AvailablePieces}}
+        </p>
+        <ng-template pTemplate="footer">
+            <p-button label="Save" icon="pi pi-check"> Add To Cart</p-button>
+            <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button>
+        </ng-template>
+    </p-card>
+  </div>
+</div>
