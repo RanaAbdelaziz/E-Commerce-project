@@ -4,8 +4,7 @@ import { CardModule } from 'primeng/card';
 import { SharedRoutingModule } from './shared-routing.module';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [],
@@ -14,12 +13,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedRoutingModule,
     CardModule,
     MenubarModule,
-    
+    TableModule
+
   ],
   exports:[
     CardModule,
     ButtonModule,
     MenubarModule,
+    TableModule
 
   ]
 })

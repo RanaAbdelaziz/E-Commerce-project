@@ -10,10 +10,11 @@ export class ListComponent {
      products : any
   constructor(private productService : ProductsService){
 
-    this.productService.getProduts().subscribe(res=>{
-      this.products = res
-      console.log("res", res)
+    this.productService.products.subscribe(res=>{
+      this.products =res
+      console.log("res", this.products)
     })
+
 
   }
 }
