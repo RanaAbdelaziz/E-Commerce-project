@@ -14,6 +14,7 @@ import { ProductsService } from './Feature/products/services/products.service';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     CoreModule,
   ],
