@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { ProductsRoutingModule } from './Feature/products/products-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './Feature/products/services/products.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ProductsService } from './Feature/products/services/products.service';
     HttpClientModule,
     AppRoutingModule,
     CoreModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
