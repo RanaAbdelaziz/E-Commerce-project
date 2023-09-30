@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ProductsRoutingModule } from './Feature/products/products-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './Feature/products/services/products.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     AppRoutingModule,
     CoreModule,
+    NgxSpinnerModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{multi:true,provide:HTTP_INTERCEPTORS,useClass:LoadingInterceptor}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
