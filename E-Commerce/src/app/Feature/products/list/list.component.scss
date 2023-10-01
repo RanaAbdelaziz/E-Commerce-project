@@ -16,33 +16,11 @@
 				}
 			}
 		}
-		.p-card-header {
-			img {
-				border-radius: 5px !important;
-				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-				transform: scale(1.0, 1.0);
-				transition-duration: 500ms;
-				transition-timing-function: ease-out;
-			}
-		}
 	}
 
 .card-img-wrapper {
 	overflow: hidden;
-	position: relative;
-	&:hover {
-		.member-icons {
-			bottom: 15px;
-			opacity: 1;
-		}
-	}
 }
-.member-icons {
-	position: absolute;
-	bottom: -30%;
-	left: 0;
-	right: 0;
-	margin-right: auto;
-	margin-left: auto;
-	opacity: 0;
+.lowQuantity{
+  box-shadow: 4px 4px 4px 4px rgb(250, 90, 90);
 }

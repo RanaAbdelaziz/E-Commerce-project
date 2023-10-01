@@ -1,14 +1,16 @@
-<div class="card">
-  <p-fieldset legend="Order Info">
-    <div class="formgrid grid">
-      <div class="field col">
-        <span><label> OrderID : </label> {{order.orderId}} </span>
+<div class="card" *ngIf="order">
+  <div class="my-5">
+    <p-fieldset legend="Order Info">
+      <div class="formgrid grid">
+        <div class="field col">
+          <span><label> OrderID : </label> {{order.orderId}} </span>
+        </div>
+        <div class="field col">
+          <span><label> Order Date : </label> {{order.date | date :'yyyy-MM-dd' }} </span>
+        </div>
       </div>
-      <div class="field col">
-        <span><label> Order Date : </label> {{order.Date | date :'yyyy-MM-dd' }} </span>
-      </div>
-    </div>
- </p-fieldset>
+   </p-fieldset>
+  </div>
   <p-fieldset class="mb-5">
     <ng-template pTemplate="header">
       <div class="flex align-items-center text-primary">
@@ -43,7 +45,7 @@
       </p-dataView>
     </div>
   </p-fieldset>
-
+  <div class="my-5">
   <p-fieldset>
     <ng-template pTemplate="header">
       <div class="flex align-items-center text-primary">
@@ -51,19 +53,21 @@
         <span class="font-bold text-lg">User Details</span>
       </div>
     </ng-template>
-    <div class="formgrid grid">
       <div class="field col">
         <span><label> Name : </label> {{order.userData.Name}} </span>
       </div>
       <div class="field col">
         <span><label> Email : </label> {{order.userData.Email}} </span>
       </div>
-    </div>
-    <div class="field col">
-      <span><label> Address : </label> {{order.userData.Address}} </span>
-    </div>
-    <div class="field col">
-      <span><label> Phone : </label> {{order.userData.Phone}} </span>
-    </div>
+      <div class="field col">
+        <span><label> Address : </label> {{order.userData.Address}} </span>
+      </div>
+      <div class="field col">
+        <span><label> Phone : </label> {{order.userData.Phone}} </span>
+      </div>
   </p-fieldset>
+</div>
+</div>
+<div *ngIf="!order">
+  Order Not Found
 </div>

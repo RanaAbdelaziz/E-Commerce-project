@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, find, first, map, mergeMap, mergeScan, mergeWith, of, switchMap } from 'rxjs';
 import { ProductsService } from '../../products/services/products.service';
 import { UsersService } from './users.service';
 
@@ -41,24 +41,27 @@ export class OrdersService {
   }
 
   getOrderDetails(orderId:number):Observable<any>{
-    let order = this.orders.value.find(e=>e.OrderId == orderId);
-    if(order){
-      let products = this.productsService.products.value
-      var orderProducts:any[] = [];
-      order.Products.forEach((e:any)=>{
-        let product = products.find(x=>x.ProductId == e.ProductId);
-        orderProducts.push({...e,Name:product.ProductName,Img:product.ProductImg,Price:e.Quantity*product.ProductPrice})
+    return this.orders.asObservable().pipe(
+      map(res => res.find(e => e.OrderId == orderId)),
+      mergeMap(result => this.userService.getUserData(result.UserId).pipe(map(userData=>({...result,userData:userData})))),
+      mergeMap(order =>this.productsService.products.pipe(map(products=>{
+        if(order){
+          var orderProducts:any[] = [];
+          order.Products.forEach((e:any)=>{
+            let product = products.find(x=>x.ProductId == e.ProductId);
+            orderProducts.push({...e,Name:product.ProductName,Img:product.ProductImg,Price:e.Quantity*product.ProductPrice})
+          });
+          return {
+            orderId:order.OrderId,
+            date: order.OrderDate,
+            userData:order.userData,
+            products:orderProducts
+          }
+        }
+        return null;
+      }))),
 
-
-      });
-      return of({
-        orderId:order.OrderId,
-        date: order.OrderData,
-        userData:this.userService.getUserData(order.UserId),
-        products:orderProducts
-      })
-    }
-    return of(null);
+    )
   }
 
 }

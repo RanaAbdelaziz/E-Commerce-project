@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class UsersService {
    }
 
    getUserData(userId:any) {
-    return this.users.value.find(e=>e.Id==userId);
+    return this.users.pipe(map(res => res.find(e => e.Id == userId)));
   }
 
 }
