@@ -1,26 +1,23 @@
+$color_1: rgb(12 128 148);
+$background-color_1: #f4f7f7;
+
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #f4f7f7;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: $background-color_1;
 }
-
 li {
-  float: left;
+	float: left;
+	a {
+		display: block;
+		color: $color_1;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
 }
-
-
-
-li a {
-  display: block;
-  color: rgb(12 128 148);
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+img {
+	width: 35px;
 }
-
-img{
-  width: 35px;
-}
-

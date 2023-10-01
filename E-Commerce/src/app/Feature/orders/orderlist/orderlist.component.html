@@ -12,14 +12,16 @@ class="md:justify-content-center ">
           <th>Date</th>
           <th>Total Price </th>
           <th>Paymant Method</th>
+          <th></th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-order>
       <tr>
-        <td><a pTooltip="Order Details" routerLink="order-Details">{{ order.id }}</a> </td>
+        <td>{{ order.id }}</td>
           <td>{{order.date | date :'yyyy-MM-dd'}}</td>
           <td>{{ order.totalPrice | currency }} </td>
           <td>{{ order.paymentMethod }}</td>
+          <td><a class="btn btn-primary" pTooltip="Order Details" routerLink="order-Details/{{order.id}}">Details</a></td>
       </tr>
   </ng-template>
 
